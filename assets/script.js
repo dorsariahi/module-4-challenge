@@ -6,16 +6,16 @@ function setupTimer() {
     timeCount = setInterval(function () {
         timer--;
         var timeReset = timeElement.textContent = "Time:" + " " + timer;
-       timer = timer;
-        if (timer <= 0) {         
+        timer = timer;
+        if (timer <= 0) {
             clearInterval(timeCount);
-              
+
             timeElement.textContent = timeReset;
-             
+
         }
     }, 1000)
 }
- 
+
 /**  Here is the event listener to start the timer and hide the quiz button*/
 document.addEventListener("click", function (event) {
     if (event.target === btnElement) {
@@ -26,20 +26,20 @@ document.addEventListener("click", function (event) {
 
 })
 
- 
+
 /**declare the index variable for the onclickHandler function**/
 var i = 0;
 
 /**Add a function to compare the answers and 
  * display each questions as the buttons are clicked.*/
 function onclickHandler(event) {
-     
-    if(timer<=0){
+
+    if (timer <= 0) {
         clearInterval(timeCount);
-        divContEL.style.display="none";
+        divContEL.style.display = "none";
         displayResult();
     }
-    var answerText = event.target.textContent 
+    var answerText = event.target.textContent
     if (answerText === questions[i].answer) {
         timer = timer;
         responsDiv.setAttribute("style", "color: green")
@@ -49,30 +49,30 @@ function onclickHandler(event) {
         responsDiv.setAttribute("style", "color: red")
         responsDiv.textContent = "Wrong";
         timer = timer - 15;
-     }
-    
-      
-     
-    if (i < questions.length-1) {
+    }
 
-      i++;
 
-      setTimeout(function () {
-      displayQuestions();
-      responsDiv.textContent = "";
-    }, 1000)
-    }else {
+
+    if (i < questions.length - 1) {
+
+        i++;
+
+        setTimeout(function () {
+            displayQuestions();
+            responsDiv.textContent = "";
+        }, 1000)
+    } else {
         setTimeout(function () {
             responsDiv.textContent = "";
             displayResult();
             clearInterval(timeCount);
-          
+
         }, 500)
-    
+
 
         divContEL.innerHTML = '';
-     }
-     
+    }
+
     /**Function to display users final score */
     function displayResult() {
         finishDiv.style.visibility = "visible";
@@ -80,15 +80,15 @@ function onclickHandler(event) {
         var HighScores = timer;
         localStorage.getItem(HighScores)
         finalScore.textContent = "Your finally score is: " + HighScores;
-         localStorage.setItem("HighScores", HighScores)
- 
+        localStorage.setItem("HighScores", HighScores)
+
     }
 }
 /**function to show the last page  */
 function renderLastItem() {
     var yourScore = localStorage.getItem("HighScores");
-     var yourInitial = localStorage.getItem("Initial");
-     if (yourScore && yourInitial === "") {
+    var yourInitial = localStorage.getItem("Initial");
+    if (yourScore && yourInitial === "") {
         return
     }
     finishDiv.textContent = "";
@@ -98,7 +98,7 @@ function renderLastItem() {
     initialAndScore.value = yourInitial + ":" + " " + yourScore;
 
 }
- 
+
 //** This event listner submit the initial and final score to the local storage */
 document.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -110,14 +110,14 @@ document.addEventListener("submit", function (event) {
         errMsg.textContent = "";
         localStorage.getItem(initialInput)
         localStorage.setItem("Initial", initialInput)
-         renderLastItem()
+        renderLastItem()
     }
 
 })
 /**This function will refresh the page and send user back to begining page when go back button is clicked */
 function init() {
-     location.reload();
- 
+    location.reload();
+
 }
 /**This function will  clear initial and score displayed on the final page */
 function clearScore() {
