@@ -1,5 +1,4 @@
 body {
-    background-color: rgb(222, 217, 226);
     margin: 20px !important;
 }
 
@@ -24,7 +23,7 @@ body {
 }
 
 .all_btn {
-    background: rgb(171, 39, 223);
+    background: darkmagenta;
     padding: 10px;
     margin: 10px;
     width: 30%;
@@ -39,7 +38,7 @@ body {
 }
 
 .myBtn {
-    background: rgb(171, 39, 223);
+    background: darkmagenta;
     padding: 10px;
     margin: 10px;
     border: 1px solid cornsilk;
@@ -51,14 +50,14 @@ body {
 }
 
 button {
-    background: rgb(171, 39, 223);
+    background: darkmagenta !important;
 
 }
 
 @media only screen and (min-width:320px) and (max-width:540px) {
 
     .all_btn {
-        background: rgb(171, 39, 223);
+        background: darkmagenta;
         padding: 10px;
         margin: 20px;
         width: 100%;
